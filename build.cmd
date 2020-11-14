@@ -1,15 +1,16 @@
 
 @echo off
-@REM cls
+cls
 
 .paket\paket.bootstrapper.exe
 if errorlevel 1 (
   exit /b %errorlevel%
 )
 
-.paket\paket.exe restore
-if errorlevel 1 (
-  exit /b %errorlevel%
-)
+@REM .paket\paket.exe restore
+@REM if errorlevel 1 (
+@REM   exit /b %errorlevel%
+@REM )
 
+dotnet restore
 fake run build.fsx 
