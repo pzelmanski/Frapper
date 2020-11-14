@@ -1,26 +1,27 @@
 ﻿#r "paket:
+nuget Fake.IO.FileSystem
 nuget Fake.Core.Target //"
 #load ".fake/build.fsx/intellisense.fsx"
 
 
 open Fake.Core
+open Fake.IO
+
+
+let buildDir = "./build"
 
 // *** Define Targets ***
 Target.create "Default" (fun _ -> 
-    Trace.log "Default fake"
+    dotnet tool restore
+    dotnet paket restore
+    Trace.log "Hello there"
 )
 
 Target.create "Clean" (fun _ -> 
-    Trace.log "--- CLEANING ---"
+    Trace.log ("Cleaning dir " + buildDir)
+    Shell.cleanDir buildDir
 )
 
-Target.create "Build" (fun _ ->
-    Trace.log "--- BUILDING ---"
-)
-
-Target.create "Deploy" (fun _ ->
-    Trace.log "--- DEPLOYING ---"
-)
 
 open Fake.Core.TargetOperators
 
