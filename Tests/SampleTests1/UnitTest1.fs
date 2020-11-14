@@ -1,11 +1,11 @@
 module SampleTests1
 
-open NUnit.Framework
+    open NUnit.Framework
 
-[<SetUp>]
-let Setup () =
-    ()
+    [<SetUp>]
+    let Setup () =
+        ()
 
-[<Test>]
-let Test1 () =
-    Assert.Pass()
+    [<Test>]
+    let Test1 () =
+        Assert.Pass()
