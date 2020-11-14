@@ -13,25 +13,22 @@ open Fake.IO.Globbing.Operators
 
 let buildDir = "./build"
 
-// *** Define Targets ***
-Target.create  "Default" (fun _ -> 
-    Trace.log "============ Hello there ============"
-)
-
-Target.create "Clean" (fun _ -> 
-    Trace.log ("============ Cleaning dir " + buildDir + " ============")
-    Shell.cleanDir buildDir
+Target.create  "Build" (fun _ -> 
+    Trace.log "============ build ============"
     !! "Frapper/*.fsproj"
       |> MSBuild.runRelease id buildDir "Build"
       |> Trace.logItems "AppBuild-Output: "
 )
 
+Target.create "Clean" (fun _ -> 
+    Trace.log ("============ Cleaning dir " + buildDir + " ============")
+    Shell.cleanDir buildDir
+)
+
 
 open Fake.Core.TargetOperators
 
-// *** Define Dependencies ***
 "Clean"
-  ==> "Default"
+  ==> "Build"
 
-// *** Start Build ***
-Target.runOrDefault "Default"
+Target.runOrDefault "Build"
