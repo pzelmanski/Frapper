@@ -10,12 +10,12 @@ open Fake.IO
 let buildDir = "./build"
 
 // *** Define Targets ***
-Target.create "Default" (fun _ -> 
+Target.create "============ Default ============" (fun _ -> 
     Trace.log "Hello there"
 )
 
 Target.create "Clean" (fun _ -> 
-    Trace.log ("Cleaning dir " + buildDir)
+    Trace.log ("============ Cleaning dir " + buildDir + " ============")
     Shell.cleanDir buildDir
 )
 
