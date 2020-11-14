@@ -11,13 +11,22 @@ open Fake.IO
 open Fake.DotNet
 open Fake.IO.Globbing.Operators
 
-let buildDir = "./build"
+let outputDir = "./output/"
+let buildDir = outputDir + "build/"
+let testDir = outputDir + "test/"
 
-Target.create  "Build" (fun _ -> 
-    Trace.log "============ build ============"
-    !! "Frapper/*.fsproj"
-      |> MSBuild.runRelease id buildDir "Build"
-      |> Trace.logItems "AppBuild-Output: "
+Target.create  "BuildApp" (fun _ -> 
+  Trace.log "============ Build ============"
+  !! "Frapper/*.fsproj"
+  |> MSBuild.runRelease id buildDir "Build"
+  |> Trace.logItems "AppBuild-Output: "
+)
+
+Target.create "BuildTests" (fun _ ->
+  Trace.log "============ Build Test ============"
+  !! "Tests/**/*.fsproj"
+  |> MSBuild.runDebug id testDir "Build"
+  |> Trace.logItems "TestBuild-Output: "
 )
 
 Target.create "Clean" (fun _ -> 
@@ -25,10 +34,15 @@ Target.create "Clean" (fun _ ->
     Shell.cleanDir buildDir
 )
 
+Target.create "Default" (fun _ ->
+  Trace.log "Running default"
+)
 
 open Fake.Core.TargetOperators
 
 "Clean"
-  ==> "Build"
+  ==> "BuildApp"
+  ==> "BuildTests"
+  ==> "Default"
 
-Target.runOrDefault "Build"
+Target.runOrDefault "Default"

@@ -40,7 +40,7 @@ NUGET
       Fake.Core.Environment (>= 5.19.1)
       Fake.Core.FakeVar (>= 5.19.1)
       FSharp.Core (>= 4.7)
-    Fake.DotNet.MsBuild (5.19.1)
+    Fake.DotNet.MSBuild (5.19.1)
       BlackFox.VsWhere (>= 1.0)
       Fake.Core.Environment (>= 5.19.1)
       Fake.Core.Process (>= 5.19.1)
