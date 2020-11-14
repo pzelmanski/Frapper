@@ -1,11 +1,14 @@
 ﻿#r "paket:
+nuget FSharp.Core 4.7.0
 nuget Fake.IO.FileSystem
+nuget Fake.DotNet.MsBuild
 nuget Fake.Core.Target //"
 #load ".fake/build.fsx/intellisense.fsx"
 
 
 open Fake.Core
 open Fake.IO
+open Fake.DotNet
 
 let buildDir = "./build"
 
