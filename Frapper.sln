@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Frapper", "Frapper\Frapper.fsproj", "{FDED5A15-A3BC-4819-9A21-17697DF5424D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDED5A15-A3BC-4819-9A21-17697DF5424D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDED5A15-A3BC-4819-9A21-17697DF5424D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDED5A15-A3BC-4819-9A21-17697DF5424D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDED5A15-A3BC-4819-9A21-17697DF5424D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
