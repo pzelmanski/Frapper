@@ -9,6 +9,7 @@ nuget Fake.Core.Target //"
 open Fake.Core
 open Fake.IO
 open Fake.DotNet
+open Fake.IO.Globbing.Operators
 
 let buildDir = "./build"
 
@@ -20,6 +21,9 @@ Target.create  "Default" (fun _ ->
 Target.create "Clean" (fun _ -> 
     Trace.log ("============ Cleaning dir " + buildDir + " ============")
     Shell.cleanDir buildDir
+    !! "Frapper/*.fsproj"
+      |> MSBuild.runRelease id buildDir "Build"
+      |> Trace.logItems "AppBuild-Output: "
 )
 
 
